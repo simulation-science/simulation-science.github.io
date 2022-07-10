@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- External Javascript libs_ext  -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@5/dist/d3.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.3/dist/handlebars.min.js"
+      integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha256-WqU1JavFxSAMcLP2WIOI+GB2zWmShMI82mTpLDcqFUg=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment.min.js"
+      integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.28/builds/moment-timezone-with-data.min.js"
+      integrity="sha256-IWYg4uIC8/erItNXYvLtyYHioRi2zT1TFva8qaAU/ww=" crossorigin="anonymous"></script>
+
+
+    <!-- Library libs_ext -->
+    <script src="static/js/libs_ext/typeahead.bundle.js"></script>
+
+    <script src="static/js/tagEditor/jquery.caret.min.js"></script>
+    <script src="static/js/tagEditor/jquery.tag-editor.min.js"></script>
+
+
+    <!-- Internal Libs -->
+    <script src="static/js/data/api.js"></script>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous">
+
+    <!-- External Fonts (no google for china) -->
+    <link href="static/css/Lato.css" rel="stylesheet" />
+    <link href="static/css/Exo.css" rel="stylesheet" />
+    <link href="static/css/Cuprum.css" rel="stylesheet" />
+    <link rel="stylesheet" href="static/css/main.css" />
+    <!--    <link rel="stylesheet" href="static/css/fa_regular.css"/>-->
+    <link rel="stylesheet" href="static/css/fa_solid.css" />
+    <link rel="stylesheet" href="static/css/lazy_load.css" />
+    <link rel="stylesheet" href="static/css/typeahead.css" />
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <title>Machine Learning Simulation: Learning to Simulate Complex Physics with Graph Networks</title>
+
+    <link rel="icon" type="image/png" href="favicon.ico">
+
+    <!-- Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-GT7LEVW06Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-GT7LEVW06Z');
+    </script> -->
+    <!-- head block ends here-->
+    
+<meta name="citation_title" content="Learning to Simulate Complex Physics with Graph Networks" />
+
+
+<meta name="citation_author" content="Alvaro Sanchez-Gonzalez" />
+
+<meta name="citation_author" content="Jonathan Godwin" />
+
+<meta name="citation_author" content="Tobias Pfaff" />
+
+<meta name="citation_author" content="Rex Ying" />
+
+<meta name="citation_author" content="Jure Leskovec" />
+
+<meta name="citation_author" content="Peter W. Battaglia" />
+
+
+<meta name="citation_abstract" content="Here we present a machine learning framework and model implementation that can learn to simulate a wide variety of challenging physical domains, involving fluids, rigid solids, and deformable materials interacting with one another. Our framework---which we term Graph Network-based Simulators (GNS)---represents the state of a physical system with particles, expressed as nodes in a graph, and computes dynamics via learned message-passing. Our results show that our model can generalize from single-timestep predictions with thousands of particles during training, to different initial conditions, thousands of timesteps, and at least an order of magnitude more particles at test time. Our model was robust to hyperparameter choices across various evaluation metrics: the main determinants of long-term performance were the number of message-passing steps, and mitigating the accumulation of error by corrupting the training data with noise. Our GNS framework advances the state-of-the-art in learned physical simulation, and holds promise for solving a wide range of complex forward and inverse problems." />
+
+
+<meta name="citation_keywords" content="Graph Neural Networks" />
+
+<meta name="citation_keywords" content="forward simulation" />
+
+<meta name="citation_keywords" content="GNS" />
+
+<meta name="citation_keywords" content="GNNs" />
+
+<meta name="citation_keywords" content="message passing" />
+
+<meta name="citation_keywords" content="encoder-processor-decoder" />
+
+<meta name="citation_keywords" content="physical simulation" />
+
+<meta name="citation_pdf_url" content="https://arxiv.org/pdf/2002.09405.pdf" />
+
+<script type="text/javascript" src="static/js/vis/vis-network.min.js"></script>
+<style>
+    .red-hyper-link {
+        color: #ED1C24 !important;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <!-- NAV -->
+    <!-- add the below items to the "navigation_bar" list if those pages are needed; can't comment those out b/c jinja doesn't support comment
+      ('index.html', 'Home'),
+      ('papers.html', 'Advanced Search'),
+      ('add_paper.html', 'Add Paper'),
+      ('join_us.html', 'Join Us'),
+      ('faq.html', 'FAQ')
+     -->
+    
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #EFECE5;" id="main-nav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img class="logo" src="static/images/mls_logo_withfont.svg" style="width: 250px;"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-right flex-grow-1" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            
+            <li class="nav-item ">
+              <a class="nav-link" href="index.html" style="font-family: 'Ubuntu', sans-serif;">Home</a>
+            </li>
+            
+            <li class="nav-item ">
+              <a class="nav-link" href="add_paper.html" style="font-family: 'Ubuntu', sans-serif;">Add Paper</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+
+    
+    <!-- User Overrides -->
+
+    
+    <!-- top block ends here-->
+    
+
+    <div class="container">
+      <!-- Tabs -->
+      <div class="tabs">
+         
+      </div>
+      <!-- Content -->
+      <div class="content">
+        
+
+<!-- Title -->
+<div class="pp-card m-3">
+    <div class="card-header">
+        <h2 class="card-title main-title text-center" style="color: black;">
+            Learning to Simulate Complex Physics with Graph Networks
+        </h2>
+        <h3 class="card-subtitle mb-2 text-muted text-center">
+            
+            <a href="papers.html?author=Alvaro Sanchez-Gonzalez" target="_blank"
+                data-tippy-content="See all papers authored by Alvaro Sanchez-Gonzalez"
+                class="text-muted filterByAuthorLink">Alvaro Sanchez-Gonzalez</a>,
+            
+            <a href="papers.html?author=Jonathan Godwin" target="_blank"
+                data-tippy-content="See all papers authored by Jonathan Godwin"
+                class="text-muted filterByAuthorLink">Jonathan Godwin</a>,
+            
+            <a href="papers.html?author=Tobias Pfaff" target="_blank"
+                data-tippy-content="See all papers authored by Tobias Pfaff"
+                class="text-muted filterByAuthorLink">Tobias Pfaff</a>,
+            
+            <a href="papers.html?author=Rex Ying" target="_blank"
+                data-tippy-content="See all papers authored by Rex Ying"
+                class="text-muted filterByAuthorLink">Rex Ying</a>,
+            
+            <a href="papers.html?author=Jure Leskovec" target="_blank"
+                data-tippy-content="See all papers authored by Jure Leskovec"
+                class="text-muted filterByAuthorLink">Jure Leskovec</a>,
+            
+            <a href="papers.html?author=Peter W. Battaglia" target="_blank"
+                data-tippy-content="See all papers authored by Peter W. Battaglia"
+                class="text-muted filterByAuthorLink">Peter W. Battaglia</a>
+            
+        </h3>
+        <h3 class="card-subtitle mb-2 text-muted text-center">
+            14/9/2020
+        </h3>
+        <div id="citation-code-wrapper" class="text-muted text-center"
+        >
+        </div>
+        <p class="text-center" style="margin-bottom: 0px;">
+            <span>Keywords:</span>
+            
+            <a href="papers.html?keyword=Graph Neural Networks" target="_blank"
+                data-tippy-content="See all papers with keyword 'Graph Neural Networks'"
+                class="text-secondary text-decoration-none filterByKeywordLink">Graph Neural Networks</a>,
+            
+            <a href="papers.html?keyword=forward simulation" target="_blank"
+                data-tippy-content="See all papers with keyword 'forward simulation'"
+                class="text-secondary text-decoration-none filterByKeywordLink">forward simulation</a>,
+            
+            <a href="papers.html?keyword=GNS" target="_blank"
+                data-tippy-content="See all papers with keyword 'GNS'"
+                class="text-secondary text-decoration-none filterByKeywordLink">GNS</a>,
+            
+            <a href="papers.html?keyword=GNNs" target="_blank"
+                data-tippy-content="See all papers with keyword 'GNNs'"
+                class="text-secondary text-decoration-none filterByKeywordLink">GNNs</a>,
+            
+            <a href="papers.html?keyword=message passing" target="_blank"
+                data-tippy-content="See all papers with keyword 'message passing'"
+                class="text-secondary text-decoration-none filterByKeywordLink">message passing</a>,
+            
+            <a href="papers.html?keyword=encoder-processor-decoder" target="_blank"
+                data-tippy-content="See all papers with keyword 'encoder-processor-decoder'"
+                class="text-secondary text-decoration-none filterByKeywordLink">encoder-processor-decoder</a>,
+            
+            <a href="papers.html?keyword=physical simulation" target="_blank"
+                data-tippy-content="See all papers with keyword 'physical simulation'"
+                class="text-secondary text-decoration-none filterByKeywordLink">physical simulation</a>
+            
+        </p>
+
+        
+        <p class="text-center" style="margin-bottom: 0px;">
+            <span>Venue: </span>
+            <a href="papers.html?venue=ICML" target="_blank" class="text-secondary text-decoration-none">ICML 2020</a>
+        </p>
+        
+
+        <div class="text-center p-3">
+            <a class="card-link red-hyper-link" target="_blank" href="https://arxiv.org/pdf/2002.09405.pdf">
+                Paper
+            </a>
+            
+            <a class="card-link red-hyper-link" data-toggle="collapse" role="button" href="#citation">
+                Citation
+            </a>
+            
+            
+            
+        </div>
+    </div>
+    <span id="invisible-paper-id" style="display: none;">1</span>
+</div>
+<div id="citation" class="pp-card m-3 collapse">
+    <div class="card-body">
+        <div class="card-text">
+            <span style="font-size: large; font-weight: bold;">Bibtex:</span>
+            <span style="white-space: pre-line; position: relative; left: 20px;">
+                @inproceedings{DBLP:conf/icml/Sanchez-Gonzalez20,
+  author    = {Alvaro Sanchez{-}Gonzalez and
+               Jonathan Godwin and
+               Tobias Pfaff and
+               Rex Ying and
+               Jure Leskovec and
+               Peter W. Battaglia},
+  title     = {Learning to Simulate Complex Physics with Graph Networks},
+  booktitle = {Proceedings of the 37th International Conference on Machine Learning,
+               {ICML} 2020, 13-18 July 2020, Virtual Event},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {119},
+  pages     = {8459--8468},
+  publisher = {{PMLR}},
+  year      = {2020},
+  url       = {http://proceedings.mlr.press/v119/sanchez-gonzalez20a.html},
+  timestamp = {Tue, 15 Dec 2020 17:40:19 +0100},
+  biburl    = {https://dblp.org/rec/conf/icml/Sanchez-Gonzalez20.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+            </span>
+        </div>
+        <p></p>
+    </div>
+</div>
+<div id="details" class="pp-card m-3">
+    <div class="card-body">
+        <div class="card-text">
+            <div id="abstractExample">
+                <p style="font-weight: bolder; font-size: 25px; text-align: center;">Abstract</p>
+                Here we present a machine learning framework and model implementation that can learn to simulate a wide variety of challenging physical domains, involving fluids, rigid solids, and deformable materials interacting with one another. Our framework---which we term Graph Network-based Simulators (GNS)---represents the state of a physical system with particles, expressed as nodes in a graph, and computes dynamics via learned message-passing. Our results show that our model can generalize from single-timestep predictions with thousands of particles during training, to different initial conditions, thousands of timesteps, and at least an order of magnitude more particles at test time. Our model was robust to hyperparameter choices across various evaluation metrics: the main determinants of long-term performance were the number of message-passing steps, and mitigating the accumulation of error by corrupting the training data with noise. Our GNS framework advances the state-of-the-art in learned physical simulation, and holds promise for solving a wide range of complex forward and inverse problems.
+            </div>
+        </div>
+        <p></p>
+    </div>
+</div>
+
+<!-- Youtube Video -->
+
+
+<!-- Project Webpage -->
+
+
+<!-- Citation Graph -->
+<!-- <div class="border-top my-3"></div>
+<div class="row p-4">
+  <div class="col-12" style="text-align: center;">
+    <span style="font-size: 25px;">Citation Graph</span> <br>
+    <span>(Double click on nodes to open corresponding papers' pages)</span>
+  </div>
+</div>
+
+<div id="citationGraph" style="width: 100%;
+  height: 600px;
+  border: 1px solid lightgray;" ondblclick="openPaperLink()"></div>
+<p><span style="font-size: 10px;">*</span> Showing citation graph for papers within our database. Data retrieved from <a href="https://www.semanticscholar.org/search?q=Learning to Simulate Complex Physics with Graph Networks&sort=relevance">Semantic Scholar</a>. For full citation graphs, visit <a href="https://www.connectedpapers.com/search?q=Learning to Simulate Complex Physics with Graph Networks">ConnectedPapers</a>.</p>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tippy.js@6/dist/tippy-bundle.umd.min.js"></script>
+<script src="static/js/views/paper_detail.js"></script>
+<script>
+    tippy(".filterByAuthorLink");
+    tippy(".filterByKeywordLink");
+    const paperID = document.getElementById("invisible-paper-id").innerHTML;
+    drawCitationGraphAndGenerateCitationCode(paperID);
+</script>
+-->
+
+
+
+      </div>
+    </div>
+
+    <!-- body block ends here-->
+    
+
+
+    
+
+
+    <!-- Footer -->
+    <footer class="footer"
+      style="background-color: #353535; width: 100%; height: 4vh; display: flex; justify-content: center; align-items: center; ">
+      <!-- no contents needed -->
+    </footer>
+
+    <!-- Code for hash tags -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        if (window.location.hash !== "") {
+          $(`a[href="${window.location.hash}"]`).tab("show");
+        }
+
+        $("a[data-toggle='tab']").on("shown.bs.tab", function (e) {
+          const hash = $(e.target).attr("href");
+          if (hash.substr(0, 1) === "#") {
+            const position = $(window).scrollTop();
+            window.location.replace(`#${hash.substr(1)}`);
+            $(window).scrollTop(position);
+          }
+        });
+      });
+    </script>
+
+    <!-- footer block ends here -->
+    
+  </body>
+
+</html>
