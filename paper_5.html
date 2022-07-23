@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- External Javascript libs_ext  -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@5/dist/d3.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.3/dist/handlebars.min.js"
+      integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha256-WqU1JavFxSAMcLP2WIOI+GB2zWmShMI82mTpLDcqFUg=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment.min.js"
+      integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.28/builds/moment-timezone-with-data.min.js"
+      integrity="sha256-IWYg4uIC8/erItNXYvLtyYHioRi2zT1TFva8qaAU/ww=" crossorigin="anonymous"></script>
+
+
+    <!-- Library libs_ext -->
+    <script src="static/js/libs_ext/typeahead.bundle.js"></script>
+
+    <script src="static/js/tagEditor/jquery.caret.min.js"></script>
+    <script src="static/js/tagEditor/jquery.tag-editor.min.js"></script>
+
+
+    <!-- Internal Libs -->
+    <script src="static/js/data/api.js"></script>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous">
+
+    <!-- External Fonts (no google for china) -->
+    <link href="static/css/Lato.css" rel="stylesheet" />
+    <link href="static/css/Exo.css" rel="stylesheet" />
+    <link href="static/css/Cuprum.css" rel="stylesheet" />
+    <link rel="stylesheet" href="static/css/main.css" />
+    <!--    <link rel="stylesheet" href="static/css/fa_regular.css"/>-->
+    <link rel="stylesheet" href="static/css/fa_solid.css" />
+    <link rel="stylesheet" href="static/css/lazy_load.css" />
+    <link rel="stylesheet" href="static/css/typeahead.css" />
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <title>Machine Learning Simulation: Combining Differentiable PDE Solvers and Graph Neural Networks for Fluid Flow Prediction</title>
+
+    <link rel="icon" type="image/png" href="favicon.ico">
+
+    <!-- Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-GT7LEVW06Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-GT7LEVW06Z');
+    </script> -->
+    <!-- head block ends here-->
+    
+<meta name="citation_title" content="Combining Differentiable PDE Solvers and Graph Neural Networks for Fluid Flow Prediction" />
+
+
+<meta name="citation_author" content="Filipe de Avila Belbute-Peres" />
+
+<meta name="citation_author" content="Thomas D. Economon" />
+
+<meta name="citation_author" content="J. Zico Kolter" />
+
+
+<meta name="citation_abstract" content="Solving large complex partial differential equations (PDEs), such as those that arise in computational fluid dynamics (CFD), is a computationally expensive process. This has motivated the use of deep learning approaches to approximate the PDE solutions, yet the simulation results predicted from these approaches typically do not generalize well to truly novel scenarios. In this work, we develop a hybrid (graph) neural network that combines a traditional graph convolutional network with an embedded differentiable fluid dynamics simulator inside the network itself. By combining an actual CFD simulator (run on a much coarser resolution representation of the problem) with the graph network, we show that we can both generalize well to new situations and benefit from the substantial speedup of neural network CFD predictions, while also substantially outperforming the coarse CFD simulation alone." />
+
+
+<meta name="citation_keywords" content="Graph Neural Networks" />
+
+<meta name="citation_keywords" content="GNNs" />
+
+<meta name="citation_keywords" content="Graph Convolutional Networks" />
+
+<meta name="citation_keywords" content="GCNs" />
+
+<meta name="citation_keywords" content="message passing" />
+
+<meta name="citation_keywords" content="hybrid simulator" />
+
+<meta name="citation_keywords" content="computational efficiency" />
+
+<meta name="citation_keywords" content="SU2" />
+
+<meta name="citation_keywords" content="computational fluid dynamics" />
+
+<meta name="citation_keywords" content="CFD simulation" />
+
+<meta name="citation_keywords" content="mesh" />
+
+<meta name="citation_keywords" content="adjoint-based differentiation" />
+
+<meta name="citation_keywords" content="differentiable simulator" />
+
+<meta name="citation_pdf_url" content="https://arxiv.org/pdf/2007.04439.pdf" />
+
+<script type="text/javascript" src="static/js/vis/vis-network.min.js"></script>
+<style>
+    .red-hyper-link {
+        color: #ED1C24 !important;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <!-- NAV -->
+    <!-- add the below items to the "navigation_bar" list if those pages are needed; can't comment those out b/c jinja doesn't support comment
+      ('index.html', 'Home'),
+      ('papers.html', 'Advanced Search'),
+      ('add_paper.html', 'Add Paper'),
+      ('join_us.html', 'Join Us'),
+      ('faq.html', 'FAQ')
+     -->
+    
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #EFECE5;" id="main-nav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img class="logo" src="static/images/mls_logo_withfont.svg" style="width: 250px;"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-right flex-grow-1" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            
+            <li class="nav-item ">
+              <a class="nav-link" href="index.html" style="font-family: 'Ubuntu', sans-serif;">Home</a>
+            </li>
+            
+            <li class="nav-item ">
+              <a class="nav-link" href="add_paper.html" style="font-family: 'Ubuntu', sans-serif;">Add Paper</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+
+    
+    <!-- User Overrides -->
+
+    
+    <!-- top block ends here-->
+    
+
+    <div class="container">
+      <!-- Tabs -->
+      <div class="tabs">
+         
+      </div>
+      <!-- Content -->
+      <div class="content">
+        
+
+<!-- Title -->
+<div class="pp-card m-3">
+    <div class="card-header">
+        <h2 class="card-title main-title text-center" style="color: black;">
+            Combining Differentiable PDE Solvers and Graph Neural Networks for Fluid Flow Prediction
+        </h2>
+        <h3 class="card-subtitle mb-2 text-muted text-center">
+            
+            <a href="papers.html?author=Filipe de Avila Belbute-Peres" target="_blank"
+                data-tippy-content="See all papers authored by Filipe de Avila Belbute-Peres"
+                class="text-muted filterByAuthorLink">Filipe de Avila Belbute-Peres</a>,
+            
+            <a href="papers.html?author=Thomas D. Economon" target="_blank"
+                data-tippy-content="See all papers authored by Thomas D. Economon"
+                class="text-muted filterByAuthorLink">Thomas D. Economon</a>,
+            
+            <a href="papers.html?author=J. Zico Kolter" target="_blank"
+                data-tippy-content="See all papers authored by J. Zico Kolter"
+                class="text-muted filterByAuthorLink">J. Zico Kolter</a>
+            
+        </h3>
+        <h3 class="card-subtitle mb-2 text-muted text-center">
+            16/8/2020
+        </h3>
+        <div id="citation-code-wrapper" class="text-muted text-center"
+        >
+        </div>
+        <p class="text-center" style="margin-bottom: 0px;">
+            <span>Keywords:</span>
+            
+            <a href="papers.html?keyword=Graph Neural Networks" target="_blank"
+                data-tippy-content="See all papers with keyword 'Graph Neural Networks'"
+                class="text-secondary text-decoration-none filterByKeywordLink">Graph Neural Networks</a>,
+            
+            <a href="papers.html?keyword=GNNs" target="_blank"
+                data-tippy-content="See all papers with keyword 'GNNs'"
+                class="text-secondary text-decoration-none filterByKeywordLink">GNNs</a>,
+            
+            <a href="papers.html?keyword=Graph Convolutional Networks" target="_blank"
+                data-tippy-content="See all papers with keyword 'Graph Convolutional Networks'"
+                class="text-secondary text-decoration-none filterByKeywordLink">Graph Convolutional Networks</a>,
+            
+            <a href="papers.html?keyword=GCNs" target="_blank"
+                data-tippy-content="See all papers with keyword 'GCNs'"
+                class="text-secondary text-decoration-none filterByKeywordLink">GCNs</a>,
+            
+            <a href="papers.html?keyword=message passing" target="_blank"
+                data-tippy-content="See all papers with keyword 'message passing'"
+                class="text-secondary text-decoration-none filterByKeywordLink">message passing</a>,
+            
+            <a href="papers.html?keyword=hybrid simulator" target="_blank"
+                data-tippy-content="See all papers with keyword 'hybrid simulator'"
+                class="text-secondary text-decoration-none filterByKeywordLink">hybrid simulator</a>,
+            
+            <a href="papers.html?keyword=computational efficiency" target="_blank"
+                data-tippy-content="See all papers with keyword 'computational efficiency'"
+                class="text-secondary text-decoration-none filterByKeywordLink">computational efficiency</a>,
+            
+            <a href="papers.html?keyword=SU2" target="_blank"
+                data-tippy-content="See all papers with keyword 'SU2'"
+                class="text-secondary text-decoration-none filterByKeywordLink">SU2</a>,
+            
+            <a href="papers.html?keyword=computational fluid dynamics" target="_blank"
+                data-tippy-content="See all papers with keyword 'computational fluid dynamics'"
+                class="text-secondary text-decoration-none filterByKeywordLink">computational fluid dynamics</a>,
+            
+            <a href="papers.html?keyword=CFD simulation" target="_blank"
+                data-tippy-content="See all papers with keyword 'CFD simulation'"
+                class="text-secondary text-decoration-none filterByKeywordLink">CFD simulation</a>,
+            
+            <a href="papers.html?keyword=mesh" target="_blank"
+                data-tippy-content="See all papers with keyword 'mesh'"
+                class="text-secondary text-decoration-none filterByKeywordLink">mesh</a>,
+            
+            <a href="papers.html?keyword=adjoint-based differentiation" target="_blank"
+                data-tippy-content="See all papers with keyword 'adjoint-based differentiation'"
+                class="text-secondary text-decoration-none filterByKeywordLink">adjoint-based differentiation</a>,
+            
+            <a href="papers.html?keyword=differentiable simulator" target="_blank"
+                data-tippy-content="See all papers with keyword 'differentiable simulator'"
+                class="text-secondary text-decoration-none filterByKeywordLink">differentiable simulator</a>
+            
+        </p>
+
+        
+        <p class="text-center" style="margin-bottom: 0px;">
+            <span>Venue: </span>
+            <a href="papers.html?venue=ICML" target="_blank" class="text-secondary text-decoration-none">ICML 2020</a>
+        </p>
+        
+
+        <div class="text-center p-3">
+            <a class="card-link red-hyper-link" target="_blank" href="https://arxiv.org/pdf/2007.04439.pdf">
+                Paper
+            </a>
+            
+            <a class="card-link red-hyper-link" data-toggle="collapse" role="button" href="#citation">
+                Citation
+            </a>
+            
+            
+            
+        </div>
+    </div>
+    <span id="invisible-paper-id" style="display: none;">5</span>
+</div>
+<div id="citation" class="pp-card m-3 collapse">
+    <div class="card-body">
+        <div class="card-text">
+            <span style="font-size: large; font-weight: bold;">Bibtex:</span>
+            <span style="white-space: pre-line; position: relative; left: 20px;">
+                @inproceedings{DBLP:conf/icml/Belbute-PeresEK20,
+  author    = {Filipe de Avila Belbute{-}Peres and
+               Thomas D. Economon and
+               J. Zico Kolter},
+  title     = {Combining Differentiable {PDE} Solvers and Graph Neural Networks for
+               Fluid Flow Prediction},
+  booktitle = {Proceedings of the 37th International Conference on Machine Learning,
+               {ICML} 2020, 13-18 July 2020, Virtual Event},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {119},
+  pages     = {2402--2411},
+  publisher = {{PMLR}},
+  year      = {2020},
+  url       = {http://proceedings.mlr.press/v119/de-avila-belbute-peres20a.html},
+  timestamp = {Tue, 15 Dec 2020 17:40:18 +0100},
+  biburl    = {https://dblp.org/rec/conf/icml/Belbute-PeresEK20.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+            </span>
+        </div>
+        <p></p>
+    </div>
+</div>
+<div id="details" class="pp-card m-3">
+    <div class="card-body">
+        <div class="card-text">
+            <div id="abstractExample">
+                <p style="font-weight: bolder; font-size: 25px; text-align: center;">Abstract</p>
+                Solving large complex partial differential equations (PDEs), such as those that arise in computational fluid dynamics (CFD), is a computationally expensive process. This has motivated the use of deep learning approaches to approximate the PDE solutions, yet the simulation results predicted from these approaches typically do not generalize well to truly novel scenarios. In this work, we develop a hybrid (graph) neural network that combines a traditional graph convolutional network with an embedded differentiable fluid dynamics simulator inside the network itself. By combining an actual CFD simulator (run on a much coarser resolution representation of the problem) with the graph network, we show that we can both generalize well to new situations and benefit from the substantial speedup of neural network CFD predictions, while also substantially outperforming the coarse CFD simulation alone.
+            </div>
+        </div>
+        <p></p>
+    </div>
+</div>
+
+<!-- Youtube Video -->
+
+
+<!-- Project Webpage -->
+
+
+<!-- Citation Graph -->
+<!-- <div class="border-top my-3"></div>
+<div class="row p-4">
+  <div class="col-12" style="text-align: center;">
+    <span style="font-size: 25px;">Citation Graph</span> <br>
+    <span>(Double click on nodes to open corresponding papers' pages)</span>
+  </div>
+</div>
+
+<div id="citationGraph" style="width: 100%;
+  height: 600px;
+  border: 1px solid lightgray;" ondblclick="openPaperLink()"></div>
+<p><span style="font-size: 10px;">*</span> Showing citation graph for papers within our database. Data retrieved from <a href="https://www.semanticscholar.org/search?q=Combining Differentiable PDE Solvers and Graph Neural Networks for Fluid Flow Prediction&sort=relevance">Semantic Scholar</a>. For full citation graphs, visit <a href="https://www.connectedpapers.com/search?q=Combining Differentiable PDE Solvers and Graph Neural Networks for Fluid Flow Prediction">ConnectedPapers</a>.</p>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tippy.js@6/dist/tippy-bundle.umd.min.js"></script>
+<script src="static/js/views/paper_detail.js"></script>
+<script>
+    tippy(".filterByAuthorLink");
+    tippy(".filterByKeywordLink");
+    const paperID = document.getElementById("invisible-paper-id").innerHTML;
+    drawCitationGraphAndGenerateCitationCode(paperID);
+</script>
+-->
+
+
+
+      </div>
+    </div>
+
+    <!-- body block ends here-->
+    
+
+
+    
+
+
+    <!-- Footer -->
+    <footer class="footer"
+      style="background-color: #353535; width: 100%; height: 4vh; display: flex; justify-content: center; align-items: center; ">
+      <!-- no contents needed -->
+    </footer>
+
+    <!-- Code for hash tags -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        if (window.location.hash !== "") {
+          $(`a[href="${window.location.hash}"]`).tab("show");
+        }
+
+        $("a[data-toggle='tab']").on("shown.bs.tab", function (e) {
+          const hash = $(e.target).attr("href");
+          if (hash.substr(0, 1) === "#") {
+            const position = $(window).scrollTop();
+            window.location.replace(`#${hash.substr(1)}`);
+            $(window).scrollTop(position);
+          }
+        });
+      });
+    </script>
+
+    <!-- footer block ends here -->
+    
+  </body>
+
+</html>

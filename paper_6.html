@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- External Javascript libs_ext  -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@5/dist/d3.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.3/dist/handlebars.min.js"
+      integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha256-WqU1JavFxSAMcLP2WIOI+GB2zWmShMI82mTpLDcqFUg=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment.min.js"
+      integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.28/builds/moment-timezone-with-data.min.js"
+      integrity="sha256-IWYg4uIC8/erItNXYvLtyYHioRi2zT1TFva8qaAU/ww=" crossorigin="anonymous"></script>
+
+
+    <!-- Library libs_ext -->
+    <script src="static/js/libs_ext/typeahead.bundle.js"></script>
+
+    <script src="static/js/tagEditor/jquery.caret.min.js"></script>
+    <script src="static/js/tagEditor/jquery.tag-editor.min.js"></script>
+
+
+    <!-- Internal Libs -->
+    <script src="static/js/data/api.js"></script>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous">
+
+    <!-- External Fonts (no google for china) -->
+    <link href="static/css/Lato.css" rel="stylesheet" />
+    <link href="static/css/Exo.css" rel="stylesheet" />
+    <link href="static/css/Cuprum.css" rel="stylesheet" />
+    <link rel="stylesheet" href="static/css/main.css" />
+    <!--    <link rel="stylesheet" href="static/css/fa_regular.css"/>-->
+    <link rel="stylesheet" href="static/css/fa_solid.css" />
+    <link rel="stylesheet" href="static/css/lazy_load.css" />
+    <link rel="stylesheet" href="static/css/typeahead.css" />
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <title>Machine Learning Simulation: Simulation Intelligence: Towards a New Generation of Scientific Methods</title>
+
+    <link rel="icon" type="image/png" href="favicon.ico">
+
+    <!-- Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-GT7LEVW06Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-GT7LEVW06Z');
+    </script> -->
+    <!-- head block ends here-->
+    
+<meta name="citation_title" content="Simulation Intelligence: Towards a New Generation of Scientific Methods" />
+
+
+<meta name="citation_author" content="Alexander Lavin" />
+
+<meta name="citation_author" content="Hector Zenil" />
+
+<meta name="citation_author" content="Brooks Paige" />
+
+<meta name="citation_author" content="David Krakauer" />
+
+<meta name="citation_author" content="Justin Gottschlich" />
+
+<meta name="citation_author" content="Tim Mattson" />
+
+<meta name="citation_author" content="Anima Anandkumar" />
+
+<meta name="citation_author" content="Sanjay Choudry" />
+
+<meta name="citation_author" content="Kamil Rocki" />
+
+<meta name="citation_author" content="Atılım Güneş Baydin" />
+
+<meta name="citation_author" content="Carina Prunkl" />
+
+<meta name="citation_author" content="Brooks Paige" />
+
+<meta name="citation_author" content="Olexandr Isayev" />
+
+<meta name="citation_author" content="Erik Peterson" />
+
+<meta name="citation_author" content="Peter L. McMahon" />
+
+<meta name="citation_author" content="Jakob Macke" />
+
+<meta name="citation_author" content="Kyle Cranmer" />
+
+<meta name="citation_author" content="Jiaxin Zhang" />
+
+<meta name="citation_author" content="Haruko Wainwright" />
+
+<meta name="citation_author" content="Adi Hanuka" />
+
+<meta name="citation_author" content="Manuela Veloso" />
+
+<meta name="citation_author" content="Samuel Assefa" />
+
+<meta name="citation_author" content="Stephan Zheng" />
+
+<meta name="citation_author" content="Avi Pfeffer" />
+
+
+<meta name="citation_abstract" content="The original Seven Motifs set forth a roadmap of essential methods for the field of scientific computing, where a motif is an algorithmic method that captures a pattern of computation and data movement. We present the Nine Motifs of Simulation Intelligence, a roadmap for the development and integration of the essential algorithms necessary for a merger of scientific computing, scientific simulation, and artificial intelligence. We call this merger simulation intelligence (SI), for short. We argue the motifs of simulation intelligence are interconnected and interdependent, much like the components within the layers of an operating system. Using this metaphor, we explore the nature of each layer of the simulation intelligence operating system stack (SI-stack) and the motifs therein: (1) Multi-physics and multi-scale modeling; (2) Surrogate modeling and emulation; (3) Simulation-based inference; (4) Causal modeling and inference; (5) Agent-based modeling; (6) Probabilistic programming; (7) Differentiable programming; (8) Open-ended optimization; (9) Machine programming. We believe coordinated efforts between motifs offers immense opportunity to accelerate scientific discovery, from solving inverse problems in synthetic biology and climate science, to directing nuclear energy experiments and predicting emergent behavior in socioeconomic settings. We elaborate on each layer of the SI-stack, detailing the state-of-art methods, presenting examples to highlight challenges and opportunities, and advocating for specific ways to advance the motifs and the synergies from their combinations. Advancing and integrating these technologies can enable a robust and efficient hypothesis-simulation-analysis type of scientific method, which we introduce with several use-cases for human-machine teaming and automated science." />
+
+
+<meta name="citation_keywords" content="simulation intelligence" />
+
+<meta name="citation_keywords" content="review" />
+
+<meta name="citation_keywords" content="simulation overview" />
+
+<meta name="citation_keywords" content="simulation-based inference" />
+
+<meta name="citation_keywords" content="differentiable programming" />
+
+<meta name="citation_keywords" content="probabilistic programming" />
+
+<meta name="citation_keywords" content="causal modeling" />
+
+<meta name="citation_keywords" content="surrogate modeling" />
+
+<meta name="citation_keywords" content="emulation" />
+
+<meta name="citation_keywords" content="nine motifs" />
+
+<meta name="citation_keywords" content="multi-physics modeling" />
+
+<meta name="citation_keywords" content="multi-scale modeling" />
+
+<meta name="citation_pdf_url" content="https://arxiv.org/pdf/2112.03235.pdf" />
+
+<script type="text/javascript" src="static/js/vis/vis-network.min.js"></script>
+<style>
+    .red-hyper-link {
+        color: #ED1C24 !important;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <!-- NAV -->
+    <!-- add the below items to the "navigation_bar" list if those pages are needed; can't comment those out b/c jinja doesn't support comment
+      ('index.html', 'Home'),
+      ('papers.html', 'Advanced Search'),
+      ('add_paper.html', 'Add Paper'),
+      ('join_us.html', 'Join Us'),
+      ('faq.html', 'FAQ')
+     -->
+    
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #EFECE5;" id="main-nav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img class="logo" src="static/images/mls_logo_withfont.svg" style="width: 250px;"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-right flex-grow-1" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            
+            <li class="nav-item ">
+              <a class="nav-link" href="index.html" style="font-family: 'Ubuntu', sans-serif;">Home</a>
+            </li>
+            
+            <li class="nav-item ">
+              <a class="nav-link" href="add_paper.html" style="font-family: 'Ubuntu', sans-serif;">Add Paper</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+
+    
+    <!-- User Overrides -->
+
+    
+    <!-- top block ends here-->
+    
+
+    <div class="container">
+      <!-- Tabs -->
+      <div class="tabs">
+         
+      </div>
+      <!-- Content -->
+      <div class="content">
+        
+
+<!-- Title -->
+<div class="pp-card m-3">
+    <div class="card-header">
+        <h2 class="card-title main-title text-center" style="color: black;">
+            Simulation Intelligence: Towards a New Generation of Scientific Methods
+        </h2>
+        <h3 class="card-subtitle mb-2 text-muted text-center">
+            
+            <a href="papers.html?author=Alexander Lavin" target="_blank"
+                data-tippy-content="See all papers authored by Alexander Lavin"
+                class="text-muted filterByAuthorLink">Alexander Lavin</a>,
+            
+            <a href="papers.html?author=Hector Zenil" target="_blank"
+                data-tippy-content="See all papers authored by Hector Zenil"
+                class="text-muted filterByAuthorLink">Hector Zenil</a>,
+            
+            <a href="papers.html?author=Brooks Paige" target="_blank"
+                data-tippy-content="See all papers authored by Brooks Paige"
+                class="text-muted filterByAuthorLink">Brooks Paige</a>,
+            
+            <a href="papers.html?author=David Krakauer" target="_blank"
+                data-tippy-content="See all papers authored by David Krakauer"
+                class="text-muted filterByAuthorLink">David Krakauer</a>,
+            
+            <a href="papers.html?author=Justin Gottschlich" target="_blank"
+                data-tippy-content="See all papers authored by Justin Gottschlich"
+                class="text-muted filterByAuthorLink">Justin Gottschlich</a>,
+            
+            <a href="papers.html?author=Tim Mattson" target="_blank"
+                data-tippy-content="See all papers authored by Tim Mattson"
+                class="text-muted filterByAuthorLink">Tim Mattson</a>,
+            
+            <a href="papers.html?author=Anima Anandkumar" target="_blank"
+                data-tippy-content="See all papers authored by Anima Anandkumar"
+                class="text-muted filterByAuthorLink">Anima Anandkumar</a>,
+            
+            <a href="papers.html?author=Sanjay Choudry" target="_blank"
+                data-tippy-content="See all papers authored by Sanjay Choudry"
+                class="text-muted filterByAuthorLink">Sanjay Choudry</a>,
+            
+            <a href="papers.html?author=Kamil Rocki" target="_blank"
+                data-tippy-content="See all papers authored by Kamil Rocki"
+                class="text-muted filterByAuthorLink">Kamil Rocki</a>,
+            
+            <a href="papers.html?author=Atılım Güneş Baydin" target="_blank"
+                data-tippy-content="See all papers authored by Atılım Güneş Baydin"
+                class="text-muted filterByAuthorLink">Atılım Güneş Baydin</a>,
+            
+            <a href="papers.html?author=Carina Prunkl" target="_blank"
+                data-tippy-content="See all papers authored by Carina Prunkl"
+                class="text-muted filterByAuthorLink">Carina Prunkl</a>,
+            
+            <a href="papers.html?author=Brooks Paige" target="_blank"
+                data-tippy-content="See all papers authored by Brooks Paige"
+                class="text-muted filterByAuthorLink">Brooks Paige</a>,
+            
+            <a href="papers.html?author=Olexandr Isayev" target="_blank"
+                data-tippy-content="See all papers authored by Olexandr Isayev"
+                class="text-muted filterByAuthorLink">Olexandr Isayev</a>,
+            
+            <a href="papers.html?author=Erik Peterson" target="_blank"
+                data-tippy-content="See all papers authored by Erik Peterson"
+                class="text-muted filterByAuthorLink">Erik Peterson</a>,
+            
+            <a href="papers.html?author=Peter L. McMahon" target="_blank"
+                data-tippy-content="See all papers authored by Peter L. McMahon"
+                class="text-muted filterByAuthorLink">Peter L. McMahon</a>,
+            
+            <a href="papers.html?author=Jakob Macke" target="_blank"
+                data-tippy-content="See all papers authored by Jakob Macke"
+                class="text-muted filterByAuthorLink">Jakob Macke</a>,
+            
+            <a href="papers.html?author=Kyle Cranmer" target="_blank"
+                data-tippy-content="See all papers authored by Kyle Cranmer"
+                class="text-muted filterByAuthorLink">Kyle Cranmer</a>,
+            
+            <a href="papers.html?author=Jiaxin Zhang" target="_blank"
+                data-tippy-content="See all papers authored by Jiaxin Zhang"
+                class="text-muted filterByAuthorLink">Jiaxin Zhang</a>,
+            
+            <a href="papers.html?author=Haruko Wainwright" target="_blank"
+                data-tippy-content="See all papers authored by Haruko Wainwright"
+                class="text-muted filterByAuthorLink">Haruko Wainwright</a>,
+            
+            <a href="papers.html?author=Adi Hanuka" target="_blank"
+                data-tippy-content="See all papers authored by Adi Hanuka"
+                class="text-muted filterByAuthorLink">Adi Hanuka</a>,
+            
+            <a href="papers.html?author=Manuela Veloso" target="_blank"
+                data-tippy-content="See all papers authored by Manuela Veloso"
+                class="text-muted filterByAuthorLink">Manuela Veloso</a>,
+            
+            <a href="papers.html?author=Samuel Assefa" target="_blank"
+                data-tippy-content="See all papers authored by Samuel Assefa"
+                class="text-muted filterByAuthorLink">Samuel Assefa</a>,
+            
+            <a href="papers.html?author=Stephan Zheng" target="_blank"
+                data-tippy-content="See all papers authored by Stephan Zheng"
+                class="text-muted filterByAuthorLink">Stephan Zheng</a>,
+            
+            <a href="papers.html?author=Avi Pfeffer" target="_blank"
+                data-tippy-content="See all papers authored by Avi Pfeffer"
+                class="text-muted filterByAuthorLink">Avi Pfeffer</a>
+            
+        </h3>
+        <h3 class="card-subtitle mb-2 text-muted text-center">
+            6/12/2021
+        </h3>
+        <div id="citation-code-wrapper" class="text-muted text-center"
+        >
+        </div>
+        <p class="text-center" style="margin-bottom: 0px;">
+            <span>Keywords:</span>
+            
+            <a href="papers.html?keyword=simulation intelligence" target="_blank"
+                data-tippy-content="See all papers with keyword 'simulation intelligence'"
+                class="text-secondary text-decoration-none filterByKeywordLink">simulation intelligence</a>,
+            
+            <a href="papers.html?keyword=review" target="_blank"
+                data-tippy-content="See all papers with keyword 'review'"
+                class="text-secondary text-decoration-none filterByKeywordLink">review</a>,
+            
+            <a href="papers.html?keyword=simulation overview" target="_blank"
+                data-tippy-content="See all papers with keyword 'simulation overview'"
+                class="text-secondary text-decoration-none filterByKeywordLink">simulation overview</a>,
+            
+            <a href="papers.html?keyword=simulation-based inference" target="_blank"
+                data-tippy-content="See all papers with keyword 'simulation-based inference'"
+                class="text-secondary text-decoration-none filterByKeywordLink">simulation-based inference</a>,
+            
+            <a href="papers.html?keyword=differentiable programming" target="_blank"
+                data-tippy-content="See all papers with keyword 'differentiable programming'"
+                class="text-secondary text-decoration-none filterByKeywordLink">differentiable programming</a>,
+            
+            <a href="papers.html?keyword=probabilistic programming" target="_blank"
+                data-tippy-content="See all papers with keyword 'probabilistic programming'"
+                class="text-secondary text-decoration-none filterByKeywordLink">probabilistic programming</a>,
+            
+            <a href="papers.html?keyword=causal modeling" target="_blank"
+                data-tippy-content="See all papers with keyword 'causal modeling'"
+                class="text-secondary text-decoration-none filterByKeywordLink">causal modeling</a>,
+            
+            <a href="papers.html?keyword=surrogate modeling" target="_blank"
+                data-tippy-content="See all papers with keyword 'surrogate modeling'"
+                class="text-secondary text-decoration-none filterByKeywordLink">surrogate modeling</a>,
+            
+            <a href="papers.html?keyword=emulation" target="_blank"
+                data-tippy-content="See all papers with keyword 'emulation'"
+                class="text-secondary text-decoration-none filterByKeywordLink">emulation</a>,
+            
+            <a href="papers.html?keyword=nine motifs" target="_blank"
+                data-tippy-content="See all papers with keyword 'nine motifs'"
+                class="text-secondary text-decoration-none filterByKeywordLink">nine motifs</a>,
+            
+            <a href="papers.html?keyword=multi-physics modeling" target="_blank"
+                data-tippy-content="See all papers with keyword 'multi-physics modeling'"
+                class="text-secondary text-decoration-none filterByKeywordLink">multi-physics modeling</a>,
+            
+            <a href="papers.html?keyword=multi-scale modeling" target="_blank"
+                data-tippy-content="See all papers with keyword 'multi-scale modeling'"
+                class="text-secondary text-decoration-none filterByKeywordLink">multi-scale modeling</a>
+            
+        </p>
+
+        
+        <p class="text-center" style="margin-bottom: 0px;">
+            <span>Venue: </span>
+            <a href="papers.html?venue=arXiv" target="_blank" class="text-secondary text-decoration-none">arXiv 2021</a>
+        </p>
+        
+
+        <div class="text-center p-3">
+            <a class="card-link red-hyper-link" target="_blank" href="https://arxiv.org/pdf/2112.03235.pdf">
+                Paper
+            </a>
+            
+            <a class="card-link red-hyper-link" data-toggle="collapse" role="button" href="#citation">
+                Citation
+            </a>
+            
+            
+            
+        </div>
+    </div>
+    <span id="invisible-paper-id" style="display: none;">6</span>
+</div>
+<div id="citation" class="pp-card m-3 collapse">
+    <div class="card-body">
+        <div class="card-text">
+            <span style="font-size: large; font-weight: bold;">Bibtex:</span>
+            <span style="white-space: pre-line; position: relative; left: 20px;">
+                @article{DBLP:journals/corr/abs-2112-03235,
+  author    = {Alexander Lavin and
+               Hector Zenil and
+               Brooks Paige and
+               David Krakauer and
+               Justin Gottschlich and
+               Tim Mattson and
+               Anima Anandkumar and
+               Sanjay Choudry and
+               others},
+  title     = {Simulation Intelligence: Towards a New Generation of Scientific Methods},
+  journal   = {CoRR},
+  volume    = {abs/2112.03235},
+  year      = {2021},
+  url       = {https://arxiv.org/abs/2112.03235},
+  eprinttype = {arXiv},
+  eprint    = {2112.03235},
+  timestamp = {Mon, 03 Jan 2022 22:03:29 +0100},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-2112-03235.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+            </span>
+        </div>
+        <p></p>
+    </div>
+</div>
+<div id="details" class="pp-card m-3">
+    <div class="card-body">
+        <div class="card-text">
+            <div id="abstractExample">
+                <p style="font-weight: bolder; font-size: 25px; text-align: center;">Abstract</p>
+                The original Seven Motifs set forth a roadmap of essential methods for the field of scientific computing, where a motif is an algorithmic method that captures a pattern of computation and data movement. We present the Nine Motifs of Simulation Intelligence, a roadmap for the development and integration of the essential algorithms necessary for a merger of scientific computing, scientific simulation, and artificial intelligence. We call this merger simulation intelligence (SI), for short. We argue the motifs of simulation intelligence are interconnected and interdependent, much like the components within the layers of an operating system. Using this metaphor, we explore the nature of each layer of the simulation intelligence operating system stack (SI-stack) and the motifs therein: (1) Multi-physics and multi-scale modeling; (2) Surrogate modeling and emulation; (3) Simulation-based inference; (4) Causal modeling and inference; (5) Agent-based modeling; (6) Probabilistic programming; (7) Differentiable programming; (8) Open-ended optimization; (9) Machine programming. We believe coordinated efforts between motifs offers immense opportunity to accelerate scientific discovery, from solving inverse problems in synthetic biology and climate science, to directing nuclear energy experiments and predicting emergent behavior in socioeconomic settings. We elaborate on each layer of the SI-stack, detailing the state-of-art methods, presenting examples to highlight challenges and opportunities, and advocating for specific ways to advance the motifs and the synergies from their combinations. Advancing and integrating these technologies can enable a robust and efficient hypothesis-simulation-analysis type of scientific method, which we introduce with several use-cases for human-machine teaming and automated science.
+            </div>
+        </div>
+        <p></p>
+    </div>
+</div>
+
+<!-- Youtube Video -->
+
+
+<!-- Project Webpage -->
+
+
+<!-- Citation Graph -->
+<!-- <div class="border-top my-3"></div>
+<div class="row p-4">
+  <div class="col-12" style="text-align: center;">
+    <span style="font-size: 25px;">Citation Graph</span> <br>
+    <span>(Double click on nodes to open corresponding papers' pages)</span>
+  </div>
+</div>
+
+<div id="citationGraph" style="width: 100%;
+  height: 600px;
+  border: 1px solid lightgray;" ondblclick="openPaperLink()"></div>
+<p><span style="font-size: 10px;">*</span> Showing citation graph for papers within our database. Data retrieved from <a href="https://www.semanticscholar.org/search?q=Simulation Intelligence: Towards a New Generation of Scientific Methods&sort=relevance">Semantic Scholar</a>. For full citation graphs, visit <a href="https://www.connectedpapers.com/search?q=Simulation Intelligence: Towards a New Generation of Scientific Methods">ConnectedPapers</a>.</p>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tippy.js@6/dist/tippy-bundle.umd.min.js"></script>
+<script src="static/js/views/paper_detail.js"></script>
+<script>
+    tippy(".filterByAuthorLink");
+    tippy(".filterByKeywordLink");
+    const paperID = document.getElementById("invisible-paper-id").innerHTML;
+    drawCitationGraphAndGenerateCitationCode(paperID);
+</script>
+-->
+
+
+
+      </div>
+    </div>
+
+    <!-- body block ends here-->
+    
+
+
+    
+
+
+    <!-- Footer -->
+    <footer class="footer"
+      style="background-color: #353535; width: 100%; height: 4vh; display: flex; justify-content: center; align-items: center; ">
+      <!-- no contents needed -->
+    </footer>
+
+    <!-- Code for hash tags -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        if (window.location.hash !== "") {
+          $(`a[href="${window.location.hash}"]`).tab("show");
+        }
+
+        $("a[data-toggle='tab']").on("shown.bs.tab", function (e) {
+          const hash = $(e.target).attr("href");
+          if (hash.substr(0, 1) === "#") {
+            const position = $(window).scrollTop();
+            window.location.replace(`#${hash.substr(1)}`);
+            $(window).scrollTop(position);
+          }
+        });
+      });
+    </script>
+
+    <!-- footer block ends here -->
+    
+  </body>
+
+</html>
